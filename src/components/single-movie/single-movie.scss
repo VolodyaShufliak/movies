@@ -1,0 +1,58 @@
+.modal_container{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    background-color: black;
+    padding:20px 0px;
+    img{
+        height: 90%;
+        width: 90%;
+        margin:auto;
+    }
+    &_information{
+        color: white;
+        padding: 5px auto;
+        display: flex;
+        height: 100%;
+        width: 90%;
+        justify-self: center;
+        flex-wrap: wrap;
+        align-content: space-between;
+        &_title{
+            width: 100%;
+            font-size: 3vw;
+            margin: auto auto;
+            text-align: center;
+        }
+        &_overwiew{
+            width: 100%;
+            box-shadow: inset 0px 0px 5px;
+            padding: 5px;
+            margin: auto auto;
+            font-size: 1.5vw;
+            text-align: justify;
+            height: 30%;
+            overflow-y:scroll;
+            scroll-behavior: smooth;
+            border-radius: 10px;
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+        }
+        &_genres{
+            width: 100%;
+            font-size: 1.5vw;
+            ul{
+                padding: 0px 18.4px;
+                margin: 0px 0px;
+            }
+        }
+        &_language{
+            font-size: 1.5vw;
+            width: 100%;
+        }
+    }
+}
+

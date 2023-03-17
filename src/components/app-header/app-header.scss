@@ -1,0 +1,32 @@
+.app {
+    &_header {
+        display: flex;
+        justify-content: space-between;
+        color:white;
+        border-width: 2 ;
+        border-color: white;
+        border-radius: 5px;
+        border-style: solid;
+        width: auto;
+        flex-wrap: wrap;
+    }
+    &_container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &_header_item{
+        padding: 5px 5px;
+        font-size: 15px;
+        margin-left: 40px;
+        h2{
+            cursor: pointer;
+        }
+        input{
+            height: 30px;
+            border-radius:20px;
+            border-color: violet;
+        }
+    }
+}

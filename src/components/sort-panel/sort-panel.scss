@@ -1,0 +1,19 @@
+.panel{
+    margin-top: inherit;
+    display: flex;
+    flex-direction: column;
+    &_checkbox{
+        margin-bottom: 50px;
+        display: flex;
+        input{
+            width: 20px;
+            height: 20px;
+            color: white;
+            margin-right: 10px;
+        }
+        label{
+            color: white;
+        }
+    }
+
+}

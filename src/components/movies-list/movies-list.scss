@@ -1,0 +1,83 @@
+.filmlist{
+    &_wrapper{
+        margin-top: inherit;
+        padding-bottom: 20px;
+        border: 3px solid white;
+    }
+    &_grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+        column-gap: 3vw;
+        row-gap: 3vh;
+        list-style-type: none;
+        padding: 5px 0px 0px 0px;
+        margin: 0px 0px;
+    }
+    &_container_for{
+        color:white;
+        position: relative;
+        width: 300px;
+        height: 450px;
+        justify-self: center;
+        &_item{
+            position: relative; 
+            cursor: pointer;
+            display: inline-block;
+            width: 95%;
+            height: 95%;
+            left: 2.5%;
+            top: 2.5%;
+            img{
+                width: 100%;
+                height: 80%;    
+            }
+        }
+
+    }
+    &_filmdata{
+        height: 10%;
+        &_title{
+            color:white;
+            font-size: 20px;
+        }
+        &_genres{
+            color:greenyellow;
+            font-size: 15px;
+        }
+    }
+
+    &_avarage{
+        color:black;
+        position: absolute;
+        top: 1%;
+        left:2.5%;
+        width:30px;
+        height: 30px;
+        border: 2px solid white;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+    }
+}
+
+.avg_green{
+    background-color: green;
+}
+.avg_yellow{
+    background-color:  yellow;
+}
+.avg_red{
+    background-color: red;
+}
+.filmlist_container_for:hover{
+    background-color: white;
+    .filmlist_filmdata_title{
+        color: black;
+    }
+    .filmlist_filmdata_genres{
+        color: black;
+    }
+} 
+
