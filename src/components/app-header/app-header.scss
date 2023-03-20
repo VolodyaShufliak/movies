@@ -9,6 +9,9 @@
         border-style: solid;
         width: auto;
         flex-wrap: wrap;
+        a{
+            text-decoration: none;
+        }
     }
     &_container{
         display: flex;

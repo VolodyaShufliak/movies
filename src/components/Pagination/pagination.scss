@@ -1,0 +1,15 @@
+.pagination{
+    width: 100%;
+    list-style-type:none;
+    display: flex;
+    justify-content: center;
+    .MuiPagination-root {
+        button {
+          color: white;
+       }
+      }
+      .css-1v2lvtn-MuiPaginationItem-root{
+        color: white;
+        pointer-events:none;
+      }
+}

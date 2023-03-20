@@ -5,30 +5,33 @@ import useMoviesService from '../../services/film-service';
 import MySpinner from '../spinner/mySpinner'
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import SingleMovie from '../single-movie/single-movie';
-const MoviesList = (props) => {
+import { memo } from 'react';
+
+
+const MoviesList = memo((props) => {
 
     const [movies,setMovies] = useState([]);
-    const {loading,error,getAllMovies} = useMoviesService();
+    const {loading,error,getAllMovies,getAllTV} = useMoviesService();
+    
     useEffect(()=>{
-            loadAllMovies();
-    },[])
-    const loadAllMovies = () => {
-        getAllMovies()
-            .then(allMoviesLoaded)
-    }
-    const allMoviesLoaded = (newmovies) => {
-        setMovies(newmovies);
-    }
+        loadAllMovies();
+    },[props.sortGenres,props.currentPage,props.activePage])
 
-    const includeAllGenres = (movieGenres,filteredGenres) => {
-        for (const filteredGenre of filteredGenres){
-            if(movieGenres.includes(+filteredGenre)){
-                continue;
-            }else{
-                return false;
-            }
+    
+    const loadAllMovies = () => {
+        console.log(props.currentPage);
+        console.log(props.activePage);
+        if(props.activePage==='Movies'){
+            getAllMovies(props.currentPage,props.sortGenres.join(','))
+                .then(allMoviesLoaded)
+        }else if(props.activePage==='TV'){
+            getAllTV(props.currentPage,props.sortGenres.join(','))
+                .then(allMoviesLoaded)
         }
-        return true;
+    }
+    const allMoviesLoaded = ({res,totalPages}) => {
+        setMovies(res);
+        props.setTotalPages(totalPages);
     }
 
 
@@ -39,14 +42,13 @@ const MoviesList = (props) => {
             try{
                 namesOfGenres.push(allgenres[index].name);
             }catch{
-                break;
+                continue;
             }
         }
         return namesOfGenres;
         
     }
-    const filteredMovie =movies.filter(movie=>includeAllGenres(movie.genres,props.sortGenres));
-    const viewMovies = filteredMovie.map(movie=>{
+    const viewMovies = movies.map(movie=>{
         let classNameForAvg ='filmlist_avarage';
         if (movie.avg>8) {
             classNameForAvg+=' avg_green'
@@ -67,7 +69,7 @@ const MoviesList = (props) => {
                     <img src={movie.poster} alt={fotka}></img>
                     <div className='filmlist_filmdata'>
                         <span className='filmlist_filmdata_title'>{movie.title}</span>
-                        <div className='filmlist_filmdata_genres'>{genreForFilm.join(', ')}</div>
+                        <div className='filmlist_filmdata_genres'>{genreForFilm.length!==0?genreForFilm.join(', '):'No genres'}</div>
                     </div>
                     <span className={classNameForAvg}>{movie.avg}</span>                   
                 </div> 
@@ -76,7 +78,11 @@ const MoviesList = (props) => {
         )
     })
     const isLoading = loading?<MySpinner/>:null;
-    const isContent = !(loading || error)?<ViewMovies viewMovies={viewMovies}/>:null;
+    const isContent = !(loading || error)
+    ?<>
+        <ViewMovies viewMovies={viewMovies} />
+     </>
+    :null;
     const isError = error?<ErrorMessage/>:null;
     return (
         <div className='filmlist_wrapper'>
@@ -85,14 +91,16 @@ const MoviesList = (props) => {
             {isError}
         </div>
     )
-}
+})
 
-const ViewMovies = ({viewMovies}) => {
+const ViewMovies = memo(({viewMovies}) => {
     return(
-        <ul className='filmlist_grid'> 
-            {viewMovies}
-        </ul>
+        <>
+           <ul className='filmlist_grid'> 
+                {viewMovies}
+            </ul>
+        </>
     )
-}
+})
 
 export default MoviesList;

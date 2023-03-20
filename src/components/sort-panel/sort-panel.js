@@ -6,10 +6,13 @@ const SortPanel = (props) => {
 
     const handleChange = (event) => {
         if(event.target.checked){
+            window.scroll(0,0);
             props.addFilterGenre(event.target.id);
         }else{
+            window.scroll(0,0);
             props.removeFilterGenre(event.target.id);
         }
+        props.setCurrentPage(1);
     }
     return (
         <ul className="panel">

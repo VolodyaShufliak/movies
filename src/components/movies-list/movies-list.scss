@@ -2,13 +2,18 @@
     &_wrapper{
         margin-top: inherit;
         padding-bottom: 20px;
-        border: 3px solid white;
+        width: 100%;
+        
     }
     &_grid{
-        display: grid;
-        grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-        column-gap: 3vw;
-        row-gap: 3vh;
+        // display: grid;
+        // grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+        // column-gap: 3vw;
+        // row-gap: 3vh;
+        //border: 3px solid white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
         list-style-type: none;
         padding: 5px 0px 0px 0px;
         margin: 0px 0px;
@@ -80,4 +85,3 @@
         color: black;
     }
 } 
-
