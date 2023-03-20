@@ -44,7 +44,7 @@ const useMoviesService = () => {
             title:movie.original_title,
             language:movie.original_language,
             overwiew:movie.overview,
-            avg:movie.vote_average,
+            avg:(movie.vote_average).toFixed(1),
             poster:movie.poster_path?`https://image.tmdb.org/t/p/w300/${movie.poster_path}`:noimg,
             genres:movie.genre_ids,
             release:movie.release_date
@@ -56,7 +56,7 @@ const useMoviesService = () => {
             title:tv.name,
             language:tv.original_language,
             overwiew:tv.overview,
-            avg:tv.vote_average,
+            avg:(tv.vote_average).toFixed(1),
             poster:tv.poster_path?`https://image.tmdb.org/t/p/w300/${tv.poster_path}`:noimg,
             genres:tv.genre_ids,
             release:tv.first_air_date
@@ -70,6 +70,22 @@ const useMoviesService = () => {
             return []
         }
     }
-    return {loading,error,clearError,getAllMovies,getAllGenres,getAllTV}
+    const getSearchedContent = async (page=1,type,query='') => {
+        try {
+            const res = await request(`${_url}/3/search/${type}?api_key=${_apiKey}&page=${page}&query=${query}`);
+            const data = res.results; 
+            return {
+                page:res.page,
+                res:type==='tv'? data.map(movie=>_transformTV(movie)):data.map(movie=>_transformMovie(movie)),
+                totalPages:res.total_pages};
+        } catch (error) {
+            return {
+                page:null,
+                res:[],
+                totalPages:null
+            }
+        }
+    }
+    return {loading,error,clearError,getAllMovies,getAllGenres,getAllTV,getSearchedContent}
 }
 export default useMoviesService;

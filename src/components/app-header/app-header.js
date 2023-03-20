@@ -12,7 +12,7 @@ const AppHeader = (props) => {
                 <NavLink to='/tv' onClick={()=>props.setCurrentPage(1)} style={({isActive})=>({color:isActive?'#9F0013':'inherit'})}><div className='app_header_item'><h2 >TV</h2></div></NavLink>
             </div>
             <div className='app_container'>
-                <div className='app_header_item'><input  type={'text'} placeholder="search" /></div>
+            <NavLink to='/search' onClick={()=>props.setCurrentPage(1)} style={({isActive})=>({color:isActive?'#9F0013':'inherit'})}><div className='app_header_item'><h2 >Search</h2></div></NavLink>
             </div>
             
         </header>

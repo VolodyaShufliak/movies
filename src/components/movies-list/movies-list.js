@@ -11,11 +11,12 @@ import { memo } from 'react';
 const MoviesList = memo((props) => {
 
     const [movies,setMovies] = useState([]);
-    const {loading,error,getAllMovies,getAllTV} = useMoviesService();
+    const {loading,error,getAllMovies,getAllTV,getSearchedContent} = useMoviesService();
     
     useEffect(()=>{
+        console.log(props.sortGenres);
         loadAllMovies();
-    },[props.sortGenres,props.currentPage,props.activePage])
+    },[props.sortGenres,props.currentPage,props.activePage,props.searchText,props.type])
 
     
     const loadAllMovies = () => {
@@ -26,6 +27,9 @@ const MoviesList = memo((props) => {
                 .then(allMoviesLoaded)
         }else if(props.activePage==='TV'){
             getAllTV(props.currentPage,props.sortGenres.join(','))
+                .then(allMoviesLoaded)
+        }else if(props.activePage==='Search'){
+            getSearchedContent(props.currentPage,props.type,props.searchText)
                 .then(allMoviesLoaded)
         }
     }
