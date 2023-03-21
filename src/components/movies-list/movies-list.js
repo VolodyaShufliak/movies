@@ -14,14 +14,11 @@ const MoviesList = memo((props) => {
     const {loading,error,getAllMovies,getAllTV,getSearchedContent} = useMoviesService();
     
     useEffect(()=>{
-        console.log(props.sortGenres);
         loadAllMovies();
     },[props.sortGenres,props.currentPage,props.activePage,props.searchText,props.type])
 
     
     const loadAllMovies = () => {
-        console.log(props.currentPage);
-        console.log(props.activePage);
         if(props.activePage==='Movies'){
             getAllMovies(props.currentPage,props.sortGenres.join(','))
                 .then(allMoviesLoaded)

@@ -7,7 +7,6 @@ const useMoviesService = () => {
     const {loading,request,error,clearError} = useHttp();
     const getAllMovies = async (page=1,genres='') => {
         try {
-            console.log(page,genres);
             const res = await request(`${_url}/3/discover/movie?api_key=${_apiKey}&page=${page}&with_genres=${genres}`);
             const data = res.results; 
             return {
