@@ -1,8 +1,11 @@
 .search_container{
     width: 100%;
     &_input{
-        width: 90%;
+        display: flex;
+        width: -webkit-fill-available;
         height: 30px;
+        justify-content: center;
+        padding: 0px 0px;
     }
     &_buttons{
         display: flex;

@@ -6,11 +6,6 @@
         
     }
     &_grid{
-        // display: grid;
-        // grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-        // column-gap: 3vw;
-        // row-gap: 3vh;
-        //border: 3px solid white;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -40,12 +35,15 @@
 
     }
     &_filmdata{
-        height: 10%;
+        height: 20%;
         &_title{
+            height: 50%;
             color:white;
-            font-size: 20px;
+            display: inline-block;
+            line-height: 100%;
         }
         &_genres{
+            height: 50%;
             color:greenyellow;
             font-size: 15px;
         }
@@ -85,3 +83,20 @@
         color: black;
     }
 } 
+@media(max-width:520px){
+    .filmlist_container_for{
+        width: 100px;
+        height: 200px;
+    }
+    .filmlist_filmdata_title{
+        font-size: 10px;    
+    }
+    .filmlist_filmdata_genres{
+        font-size: 1%;
+    }
+    .filmlist_avarage{
+        width: 15px;
+        height: 15px;
+        font-size: 10px;
+    }
+}

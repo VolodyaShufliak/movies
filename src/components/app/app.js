@@ -1,4 +1,5 @@
 import AppHeader from "../app-header/app-header"
+import AppHead from "../app-head/app-head"
 import './app.scss'
 import MainPage from "../pages/main-page/main-page";
 import Modal from "../app-modal/app-modal";
@@ -29,7 +30,7 @@ const App = () => {
     return(
         <Router>
             <div className="app">
-                <AppHeader setCurrentPage={setCurrentPage} />
+                <AppHead setCurrentPage={setCurrentPage} />
                 <main>
                     <Routes>
                         <Route path="/" element={<MainPage 

@@ -10,7 +10,8 @@ const MyPagination = (props) => {
         <div  className='pagination'>
             <Pagination 
             onClick={(e)=>choosePage(e.target.textContent)} 
-            count={props.totalPages} color={'secondary'} page={+props.currentPage} />
+            count={props.totalPages} color={'secondary'} page={+props.currentPage}
+            />
         </div>
     )
 }
