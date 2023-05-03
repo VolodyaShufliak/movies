@@ -1,6 +1,5 @@
 import './pagination.scss'
 import Pagination from '@mui/material/Pagination'
-import { memo, useEffect } from 'react'
 const MyPagination = (props) => {
     const choosePage = (page) => {
         window.scroll(0, 0);

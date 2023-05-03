@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import useMoviesService from '../../../services/film-service';
+import {useState } from 'react';
 import MoviesList from '../../movies-list/movies-list';
 import SortPanel from '../../sort-panel/sort-panel';
 import './main-page.scss'
